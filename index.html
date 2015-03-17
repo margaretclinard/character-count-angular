@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular Character Counter</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <div class="container" ng-app="counter">
+      <h1>SEO Toolbox: Metadata Character Counter</h1>
+      <div class="row">
+        <div class="col-md-6" ng-controller="TitleCount as title" >
+          <form ng-submit="title.submit()">
+            <h2>Title Tag</h2>
+            <h3>A <strong>title tag</strong> should be no more than 55 characters.</h3>
+            <textarea class="textbox" type="text" ng-model="title"></textarea>
+            <div ng-class="{'alert-danger': title.length > 55}" ng-show="title.length > 55">Too many characters. Meta title must be under 55 characters.</div>
+            <h3><em>Character count:</em> {{title.length}}</h3>
+            <div>
+              <input class="btn btn-default" value="Save" type="submit">
+            </div>
+            <p>Correct character count? Copy the below code into your &lt;head&gt; tag and you're ready to go.</p>
+            <div><pre><code>&lt;title&gt;{{title}}&lt;/title&gt;</code></pre></div>
+            <p>Want more info on title tags? See <a href="http://moz.com/learn/seo/title-tag">MOZ's documentation</a>.</p>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <form>
+            <h2>Meta Description</h2>
+            <h3>A <strong>meta description</strong> should be no more than 150 characters.</h3>
+            <textarea class="textbox" type="text" ng-model="description"></textarea>
+            <div ng-class="{'alert-danger': description.length > 150}" ng-show="description.length > 150">Too many characters. Meta description must be under 150 characters.</div>
+            <h3><em>Character count:</em> {{description.length}}</h3>
+            <div>
+              <input class="btn btn-default" type="submit" value="Save">
+            </div>
+            <p>Correct character count? Copy the below code into your &lt;head&gt; tag and you're ready to go.</p>
+            <div><pre><code>&lt;meta name="description" content="{{description}}"&gt;</code></pre></div>
+            <p>Want more info on meta descriptions? See <a href="http://moz.com/learn/seo/meta-description">MOZ's documentation</a>.</p>
+          </form>
+        </div>
+
+        </div>
+      </div>
+    </div>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="app/app.module.js"></script>
+    <script src="app/app.controller.js"></script>
+  </body>
+</html>
